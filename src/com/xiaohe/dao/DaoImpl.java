@@ -250,7 +250,7 @@ public class DaoImpl implements Dao{
 		ArrayList<Userinfo> list= new ArrayList<Userinfo>();
 		conn=OracleUtil.getConn();
 		try {
-			String sql="call pro_fenye(?,?,?,?,?)";
+			String sql="call pro_fenye1(?,?,?,?,?)";
 			cs=conn.prepareCall(sql);
 			
 			cs.setString(1, "userinfo1");
