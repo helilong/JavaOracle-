@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.xiaohe.dao.DaoImpl;
 import com.xiaohe.model.Userinfo;
+import com.xiaohe.util.PageModel;
 
 /**
  * Servlet implementation class UserServlet
@@ -49,11 +49,26 @@ public class UserServlet extends HttpServlet {
 			String name = request.getParameter("uname");
 			
 			Userinfo u = new Userinfo(id,name);
-			int count = userDao.proInsert(u);
-			System.out.println("------"+count);
-			if(count==0) {
+			int count1 = userDao.proInsert(u);
+		//int count = userDao.proInsert2(u);
+			System.out.println("-----111111111111--------"+count1);
+			if(count1>0) {
 				response.sendRedirect("UserServlet");
 			}
+		}else if("fenye".equals(op)) {
+			
+			String pageNo=null;
+			pageNo=request.getParameter("pageNo");
+			if(pageNo==null){
+				pageNo="1";
+				
+			}
+			PageModel<Userinfo> pm=userDao.getAllUserinfo1(Integer.parseInt(pageNo));
+			request.setAttribute("allinfo",pm);
+			request.setAttribute("list",pm.getList());
+			request.getRequestDispatcher("show_fenye.jsp").forward(request,response);
+			
+			
 		}
 	}
 

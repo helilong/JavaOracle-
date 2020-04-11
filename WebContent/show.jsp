@@ -41,7 +41,16 @@
 		<td><a href="UserServlet?op=toadd">添加学生信息</a></td>
 		
 	</tr>
-
+	<tr >
+		<td>
+		<form action="UserServlet">
+		
+		页数：<input name="pageNo"/> 
+		<input type="submit" value="查看"/>
+		
+		</td>
+		</form>
+	</tr>
 </table>
 
 

@@ -1,5 +1,6 @@
 package com.xiaohe.util;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -72,6 +73,19 @@ public class OracleUtil {
 				e.printStackTrace();
 			}
 	}
-	
+	//静态方法 关闭连接
+		public static void getClose1(Connection conn,CallableStatement cs,ResultSet rs) {
+			
+				try {
+					
+					if(rs!=null) rs.close();
+					if(cs!=null) cs.close(); //关闭存储过程
+					if(conn!=null) conn.close();
+				
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
 	
 }
